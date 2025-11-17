@@ -1,58 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JS Scrolling Effect</title>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
-
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Stylesheet Reference -->
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
     <div class="header">
-        <div class="header-container">
-            <div class="left-nav-container">
-                <h1 id="logo-title">PARALLAXING</h1>
-            </div>
-            <div class="right-nav-container">
-                <a class="color-text-light" href="#home">INTRO</a>
-                <a class="color-text-light" href="#">TRIGGER</a>
-                <a class="color-text-light" href="#">HOLD</a>
-                <a class="color-text-light" href="#">FADE</a>
-                <a class="color-text-light" href="#">SWEEP</a>
-            </div>
+      <div class="header-container">
+        <div class="left-nav-container">
+          <h1 id="logo-title">PARALLAXING</h1>
         </div>
+        <div class="right-nav-container">
+          <a class="color-text-light" href="#home">INTRO</a>
+          <a class="color-text-light" href="#trigger">TRIGGER</a>
+          <a class="color-text-light" href="#">HOLD</a>
+          <a class="color-text-light" href="#">FADE</a>
+          <a class="color-text-light" href="#">SWEEP</a>
+        </div>
+      </div>
     </div>
 
-    <div id="home" class="hero-section">
-        <div class="parallax">
-            <div class="parallax-layer layer-back"></div>
-            <div class="parallax-layer layer-middle"></div>
-            <div class="parallax-layer layer-front"></div>
-            <!--- TO DO, COME BACK LATER -->
-        </div>
+    <div class="main-content">
+      <div id="home" class="hero-section">
         <div class="hero-title-container">
-            <h2 id="hero-subtitle">— THE TACTICAL SCROLLING ACTION —</h2>
-            <h1 id="hero-title">PARALLAX<span>ING</span></h1>
+          <h2 id="hero-subtitle">— THE TACTICAL SCROLLING ACTION —</h2>
+          <h1 id="hero-title">PARALLAX<span>ING</span></h1>
         </div>
+      </div>
+
+      <div id="trigger" class="trigger-section">
+        <div class="trigger-container">
+          <div class="trigger-title" data-scroll-container>
+            <h2
+              class="intersection-element"
+              data-x-range="100"
+              data-y-range="0"
+              data-scale-range="0"
+              data-opacity-range="1"
+              data-animation-distance="100"
+              data-offset="100"
+            >
+              SCROLLING
+            </h2>
+            <h2
+              class="intersection-element"
+              data-x-range="100"
+              data-y-range="0"
+              data-scale-range="0"
+              data-opacity-range="1"
+              data-animation-distance="100"
+              data-offset="100"
+            >
+              TRIGGERS
+            </h2>
+            <h2
+              class="intersection-element color-text-gray-80"
+              data-x-range="0"
+              data-y-range="56"
+              data-scale-range="0"
+              data-opacity-range="1"
+              data-animation-distance="56"
+              data-offset="156"
+            >
+              TRIGGERS
+            </h2>
+            <h2
+              class="intersection-element color-text-gray-90"
+              data-x-range="0"
+              data-y-range="56"
+              data-scale-range="0"
+              data-opacity-range="1"
+              data-animation-distance="56"
+              data-offset="156"
+            >
+              TRIGGERS
+            </h2>
+          </div>
+          <div class="trigger-body">
+            <p>
+              Animations that trigger based on scrolling require some css 
+              and javascript to perform. As the user scrolls down the page, 
+              different elements can be animated into view, creating a 
+              dynamic and engaging experience.
+            <br><br>
+              Inspect the html to see how different data attributes are used to
+              configure the scroll effects for each element.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-section">
+        
+      </div>
+
     </div>
 
-    <div id="trigger" class="trigger-section">
-        <div class="trigger-container">
-            <div class="trigger-left">
-                <h2>SCROLLING</h2>
-                <h2>TRIGGERS</h2>
-            </div>
-            <div class="trigger-body">
-                <p> Animations that trigger based on scrolling require some css and javascript to perform. As the user scrolls down the page, different elements can be animated into view, creating a dynamic and engaging experience.</p>
-            </div>
-        </div>
-    </div>
-    
     <script src="js/script.js"></script>
-</body>
+  </body>
 </html>
