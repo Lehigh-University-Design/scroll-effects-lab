@@ -40,15 +40,15 @@
 
       <div id="trigger" class="trigger-section">
         <div class="trigger-container">
-          <div class="trigger-title" data-scroll-container>
+          <div class="trigger-title">
             <h2
               class="intersection-element"
               data-x="-100"
               data-y="0"
               data-scale="1"
               data-opacity="0"
-              data-animation-distance="100"
-              data-hold-distance="0"
+              data-speed="100"
+              data-hold="0"
               data-offset="100"
             >
               SCROLLING
@@ -59,8 +59,8 @@
               data-y="0"
               data-scale="1"
               data-opacity="0"
-              data-animation-distance="100"
-              data-hold-distance="0"
+              data-speed="100"
+              data-hold="0"
               data-offset="100"
             >
               TRIGGERS
@@ -71,7 +71,7 @@
               data-y="-56"
               data-scale="1"
               data-opacity="0"
-              data-animation-distance="56"
+              data-speed="56"
               data-offset="156"
             >
               TRIGGERS
@@ -82,7 +82,7 @@
               data-y="-56"
               data-scale="1"
               data-opacity="0"
-              data-animation-distance="56"
+              data-speed="56"
               data-offset="156"
             >
               TRIGGERS
@@ -94,17 +94,136 @@
               and javascript to perform. As the user scrolls down the page, 
               different elements can be animated into view, creating a 
               dynamic and engaging experience.
-            <br><br>
+              <br><br>
               Inspect the html to see how different data attributes are used to
               configure the scroll effects for each element.
             </p>
           </div>
         </div>
+        <div class="seperartor"></div>
+        <div class="trigger-container column">
+          <div class="trigger-title">
+            <h2
+              class="intersection-element"
+              data-y="100,-100"
+              data-opacity="0,0"
+              data-speed="100"
+              data-offset="120"
+              data-hold="606"
+            >
+              Dolor amet consectetur!
+            </h2>
+            <h3
+              class="intersection-element thin"
+              data-y="100,-100"
+              data-opacity="0,0"
+              data-speed="100"
+              data-offset="156"
+              data-hold="570"
+            >
+              Rerum consectetur unde pariatur molestias?<br>
+              Adipisci quibusdam iste tenetur recusandae molestias.
+            </h3>
+          </div>
+          <div class="flexbox-row intersection-element"
+            data-y="100,-100"
+            data-opacity="0,0"
+            data-speed="100"
+            data-offset="130"
+            data-hold="600"
+          >
+            <div class="trigger-body">
+              <p>
+                Libero nulla, alias deserunt aut commodi est sed dolore. Illum nulla 
+                necessitatibus doloremque et perspiciatis iure maiores facere minus.
+                Magnam temporibus similique exercitationem impedit. Dolorum 
+                voluptatem sequi eum quasi quam sapiente accusantium nulla soluta 
+                rem. Illo culpa nostrum accusamus totam provident reprehenderit.
+                <br>Impedit, neque accusantium perferendis consequuntur autem 
+                maxime placeat ut iure labore! Dolores cumque consequatur animi 
+                nam rem provident?
+              </p>
+            </div>
+            <div class="trigger-body">
+              <p>
+                Libero nulla, alias deserunt aut commodi est sed dolore. Illum nulla 
+                necessitatibus doloremque et perspiciatis iure maiores facere minus, 
+                ducimus blanditiis odio. 
+                <br>
+                <br>
+                Voluptatibus possimus ducimus sed vitae adipisci praesentium at 
+                consequatur provident exercitationem. Optio neque soluta perferendis 
+                placeat corrupti molestias error dolores consectetur exercitationem.
+                <br>
+              </p>
+          </div>
+        </div>
       </div>
 
-      <div class="test-section">
-        
+      <div class="hold-section">
+        <div class="hold-container">
+          <div class="hold-sticky">
+            <div class="hold-container-title">
+              <h2 class="color-text-accent thin">PARALLAX HOLD</h2>
+            </div>
+            <div class="hold-container-body">
+              <p class="color-text-light">
+                Content here can be animated to hold  position or move as the
+                user scrolls, creating a parallax effect in the background.
+                <br><br>
+                Inspect the html and css. You can see that `hold-sticky` is
+                just a simple sticky in a long parent container. 
+              </p>
+            </div>
+            <div class="scrolling-quote">
+              <h2>
+                <span class="intersection-element" data-opacity="0,0" data-speed="100" data-offset="1700" data-hold="500">Why</span>
+                <span class="intersection-element" data-opacity="0,0" data-speed="100" data-offset="1800" data-hold="400">are</span>
+                <span class="intersection-element" data-opacity="0,0" data-speed="100" data-offset="1900" data-hold="300">we</span>
+                <span class="intersection-element" data-opacity="0,0" data-speed="100" data-offset="2000" data-hold="200">still</span>
+                <span class="intersection-element" data-opacity="0,0" data-speed="100" data-offset="2100" data-hold="100">here?</span>
+              </h2>
+            </div>
+            <div class="scrolling-quote">
+              <h2>
+                <span class="intersection-element" data-opacity="0,0" data-speed="100" data-offset="2400" data-hold="300">Just</span>
+                <span class="intersection-element" data-opacity="0,0" data-speed="100" data-offset="2500" data-hold="200">to</span>
+                <span class="intersection-element" data-opacity="0,0" data-speed="100" data-offset="2600" data-hold="100">suffer?</span>
+              </h2>
+            </div>
+            <div class="scrolling-quote">
+              <h2>
+                <span class="intersection-element" data-opacity="0,0" data-speed="100" data-offset="2900" data-hold="600">Every</span>
+                <span class="intersection-element" data-opacity="0,0" data-speed="100" data-offset="3000" data-hold="500">night</span>
+                <span class="intersection-element" data-opacity="0,0" data-speed="100" data-offset="3100" data-hold="400">,  I</span>
+                <span class="intersection-element" data-opacity="0,0" data-speed="100" data-offset="3200" data-hold="300">can</span>
+                <span class="intersection-element" data-opacity="0,0" data-speed="100" data-offset="3300" data-hold="300">feel</span>
+                <span class="intersection-element" data-opacity="0,0" data-speed="100" data-offset="3400" data-hold="200">my</span>
+                <span class="intersection-element" data-opacity="0,0" data-speed="100" data-offset="3500" data-hold="100">leg</span>
+              </h2>
+            </div>
+            <div class="scrolling-quote">
+              <h2>
+                <span class="intersection-element" data-opacity="0,0" data-speed="100" data-offset="3800" data-hold="300">and</span>
+                <span class="intersection-element" data-opacity="0,0" data-speed="100" data-offset="3900" data-hold="200">my</span>
+                <span class="intersection-element" data-opacity="0,0" data-speed="100" data-offset="4000" data-hold="100">arm</span>
+              </h2>
+            </div>
+            <div class="scrolling-quote">
+              <h2>
+                <span class="intersection-element" data-opacity="0,0" data-speed="100" data-offset="4300" data-hold="300">even</span>
+                <span class="intersection-element" data-opacity="0,0" data-speed="100" data-offset="4400" data-hold="200">my</span>
+                <span class="intersection-element" data-opacity="0,0" data-speed="100" data-offset="4500" data-hold="100">fingers.</span>
+              </h2>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <!-- Just to suffer? Every night, I can feel my leg... and my arm... even my fingers. The body I've lost... the comrades I've lost... won't stop hurting. It's like they're all still there."</h2> -->
+
+
+      <div class="test-section"></div>
 
     </div>
 

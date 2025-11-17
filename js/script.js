@@ -23,9 +23,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const y = parseRange(target.dataset.y);
             const scale = parseRange(target.dataset.scale, 1);
             const opacity = parseRange(target.dataset.opacity, 1);
-            const animationDistance = parseFloat(target.dataset.animationDistance) || 200;
-            const holdDistance = parseFloat(target.dataset.holdDistance) || 0;
-            const offset = parseFloat(target.dataset.offset) || 0;
+            const animationDistance = parseFloat(target.dataset.speed) || 200;
+            const holdDistance = parseFloat(target.dataset.hold) || 0;
+            const offset = parseFloat(target.dataset.offset) || 100;
 
             elementsToAnimate.push({
                 domElement: target,
