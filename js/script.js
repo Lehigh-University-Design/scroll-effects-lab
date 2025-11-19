@@ -6,10 +6,39 @@ document.addEventListener('DOMContentLoaded', function () {
     const elementsToAnimate = [];
 
     const parseRange = (dataAttrValue, defaultValue = 0) => {
-        const values = dataAttrValue ? dataAttrValue.split(',').map(v => parseFloat(v.trim())) : [];
-        const start = values[0] !== undefined && !isNaN(values[0]) ? values[0] : defaultValue;
-        const center = defaultValue;
-        const end = values[1] !== undefined && !isNaN(values[1]) ? values[1] : defaultValue;
+        const values = dataAttrValue ? 
+            dataAttrValue
+                .split(',')
+                .map(v => parseFloat(v.trim()))
+                .filter(v => !isNaN(v))
+            : [];
+
+        let start = defaultValue;
+        let center = defaultValue;
+        let end = defaultValue;
+
+        const count = values.length;
+        switch (count) {
+            case 1:
+                start = values[0];
+                break;
+            case 2:
+                start = values[0];
+                end = values[1];
+                break;
+            case 3:
+                start = values[0];
+                center = values[1];
+                end = values[2];
+                break;
+            default:
+                if (count > 3) {
+                    start = values[0];
+                    center = values[1];
+                    end = values[2];
+                }
+                break;
+        }
         
         return { start, center, end };
     };
@@ -23,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const y = parseRange(target.dataset.y);
             const scale = parseRange(target.dataset.scale, 1);
             const opacity = parseRange(target.dataset.opacity, 1);
-            const animationDistance = parseFloat(target.dataset.speed) || 200;
+            const animationDistance = parseRange(target.dataset.speed, 200);
             const holdDistance = parseFloat(target.dataset.hold) || 0;
             const offset = parseFloat(target.dataset.offset) || 100;
 
@@ -34,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 x, y, scale, opacity,
                 animationDistance, holdDistance, offset,
                 
-                totalAnimationDistance: (animationDistance * 2) + holdDistance,
+                totalAnimationDistance: animationDistance.start + animationDistance.end + holdDistance ,
             });
         });
     };
@@ -45,27 +74,26 @@ document.addEventListener('DOMContentLoaded', function () {
      */
     const handleTriggerAnimations = (currentScroll) => {
 
-        elementsToAnimate.forEach(item => { // item is the single element config
+        elementsToAnimate.forEach(item => {
             
             // Calculate how far we've scrolled past the element's top position, and clamp it.
             const distanceScrolledPast = currentScroll - item.startScrollPosition - item.offset;
             const clampedScroll = Math.min(item.totalAnimationDistance, Math.max(0, distanceScrolledPast));
 
-            // Calculate the animation progress (from begin 0-1, middle 1, and end 1-2)
-            // using the element's distances
+            // Calculate the animation progress by distance (from begin 0-1, middle 1, and end 1-2)
             let progress = 0;
-            if (clampedScroll <= item.animationDistance) {
+            if (clampedScroll <= item.animationDistance.start) {
                 // PHASE 1: ANIMATION IN (0% to 100%)
-                progress = clampedScroll / item.animationDistance;
+                progress = clampedScroll / item.animationDistance.start;
             } 
-            else if (clampedScroll <= item.animationDistance + item.holdDistance) {
+            else if (clampedScroll <= item.animationDistance.start + item.holdDistance) {
                 // PHASE 2: HOLD (100% Locked)
                 progress = 1;
             } 
             else {
                 // PHASE 3: ANIMATION OUT (100% to 200%)
-                const outScroll = clampedScroll - (item.animationDistance + item.holdDistance);
-                progress = 1 + (outScroll / item.animationDistance);
+                const outScroll = clampedScroll - (item.animationDistance.start + item.holdDistance);
+                progress = 1 + (outScroll / item.animationDistance.end);
             }
 
             const interpolateValue = (range) => {
@@ -87,6 +115,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`;
             
             item.domElement.style.opacity = opacity;
+
+            // Add class override for css animations could be a better way to do all of this.
+            // element.classList.add([]);
+            // element.classList.remove([]);
         });
     };
 
