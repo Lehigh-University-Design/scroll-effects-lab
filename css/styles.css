@@ -417,7 +417,7 @@ button,
         flex-direction: column;
         justify-content: center;
         box-sizing: border-box;
-        background-color: var(--color-white);
+        background-color: var(--color-light);
         gap: 2em;
         padding-inline: 2em;
         width: 100vw;

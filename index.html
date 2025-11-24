@@ -3,16 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JS Scrolling Effect</title>
+    <title>JS Scroll Trigger Effect</title>
 
-    <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Stylesheet Reference -->
     <link rel="stylesheet" href="css/styles.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+    
   </head>
   <body>
     <div class="header js-scroll-target">
@@ -33,29 +35,33 @@
       <div id="home" class="hero-section">
         <div class="grid-bg js-scroll-target" data-y="0,0,0" data-opacity="0.1,0.1,0.1" data-speed="3500"></div>
         <div class="square js-scroll-target" style="width: 480px; height: 480px;"
-            data-x="-812,-812,-812" 
-            data-y="-104,400,400"
-            data-rotate="-14,28,28"
-            data-speed="10000"
-            data-offset="462"></div>
+            data-x="-812" 
+            data-y="-104,400"
+            data-rotate="-14,28"
+            data-speed="9600"
+            data-trigger=".hero-section"
+            data-trigger-range="top top"></div>
         <div class="square js-scroll-target" style="width: 180px; height: 180px;"
-            data-x="-330,-330,-330" 
-            data-y="-340,360,360"
-            data-rotate="12,-6,-6"
-            data-speed="2000"
-            data-offset="462"></div>
+            data-x="-330" 
+            data-y="-320,380"
+            data-rotate="12,-6"
+            data-speed="2400"
+            data-trigger=".hero-section"
+            data-trigger-range="top top"></div>
         <div class="circle js-scroll-target" style="width: 450px; height: 450px; z-index: 2"
-            data-x="680,680,680" 
-            data-y="110,-500,-1100"
-            data-rotate="10,0,0"
+            data-x="680" 
+            data-y="110,-500"
+            data-rotate="10,0"
             data-speed="3000"
-            data-offset="462"></div>
+            data-trigger=".hero-section"
+            data-trigger-range="top top"></div>
         <div class="circle js-scroll-target" style="width: 120px; height: 120px; z-index: 2"
-            data-x="380,380,380" 
-            data-y="110,-50,-50"
-            data-rotate="10,0,0"
+            data-x="380"
+            data-y="110,-50"
+            data-rotate="10,0"
             data-speed="3000"
-            data-offset="462"></div>
+            data-trigger=".hero-section"
+            data-trigger-range="top top"></div>
         <div class="hero-title-container">
           <h2 id="hero-subtitle">— THE TACTICAL SCROLLING ACTION —</h2>
           <h1 id="hero-title">PARALLAX<span>ING</span></h1>
@@ -67,47 +73,37 @@
           <div class="trigger-title">
             <h2
               class="js-scroll-target"
-              data-x="-100"
-              data-y="0"
-              data-scale="1"
-              data-opacity="0"
-              data-speed="100"
-              data-hold="0"
+              data-x="-100,0"
+              data-opacity="0,1"
+              data-speed="100,0"
               data-offset="100"
             >
               SCROLLING
             </h2>
             <h2
               class="js-scroll-target"
-              data-x="-100"
-              data-y="0"
-              data-scale="1"
-              data-opacity="0"
+              data-x="-100,0"
+              data-opacity="0,1"
               data-speed="100"
-              data-hold="0"
               data-offset="100"
             >
               TRIGGERS
             </h2>
             <h2
               class="js-scroll-target color-text-gray-70"
-              data-x="0"
-              data-y="-56"
-              data-scale="1"
-              data-opacity="0"
+              data-y="-56,0"
+              data-opacity="0,1"
               data-speed="100"
-              data-offset="156"
+              data-offset="200"
             >
               TRIGGERS
             </h2>
             <h2
               class="js-scroll-target color-text-gray-80"
-              data-x="0"
-              data-y="-56"
-              data-scale="1"
-              data-opacity="0"
+              data-y="-56,0"
+              data-opacity="0,1"
               data-speed="100"
-              data-offset="212"
+              data-offset="244"
             >
               TRIGGERS
             </h2>
@@ -130,8 +126,8 @@
           <div class="trigger-title">
             <h2
               class="js-scroll-target hop-transition"
-              data-y="100,-100"
-              data-opacity="0,0"
+              data-y="100,0,-100"
+              data-opacity="0,1,0"
               data-speed="100"
               data-offset="120"
               data-hold="606"
@@ -140,8 +136,8 @@
             </h2>
             <h3
               class="js-scroll-target thin hop-transition"
-              data-y="100,-100"
-              data-opacity="0,0"
+              data-y="100,0,-100"
+              data-opacity="0,1,0"
               data-speed="100"
               data-offset="156"
               data-hold="570"
@@ -151,8 +147,8 @@
             </h3>
           </div>
           <div class="flexbox-row js-scroll-target hop-transition"
-            data-y="100,-100"
-            data-opacity="0,0"
+            data-y="100,0,-100"
+            data-opacity="0,1,0"
             data-speed="100"
             data-offset="130"
             data-hold="600"
@@ -190,60 +186,60 @@
         <div class="hold-sticky sticky">
           <!-- Parallax Background Example -->
           <div class="square js-scroll-target" style="width: 200px; height: 200px;"
-                data-y="2030,-125,-1970"
+                data-y="1970,-125,-2030"
                 data-rotate="-315,45,405"
-                data-opacity="0.9,0.9,0.9"
-                data-speed="2000,0,2000"
-                data-offset="200"></div>
+                data-opacity="0.9"
+                data-trigger=".hold-section"
+                data-trigger-range="top bottom,bottom top"></div>
           <div class="circle js-scroll-target" style="width: 150px; height: 150px;"
-                data-y="1100,-100,-900"
+                data-y="900,-100,-1100"
                 data-rotate="0,135,270"
-                data-opacity="0.7,0.7,0.7"
-                data-speed="2000,0,2000"
-                data-offset="200"></div>
+                data-opacity="0.7"
+                data-trigger=".hold-section"
+                data-trigger-range="top bottom,bottom top"></div>
           <div class="square js-scroll-target" style="width: 80px; height: 80px;"
-                data-y="565,-65,-435"
+                data-y="435,-65,-565"
                 data-rotate="315,-45,-405"
-                data-opacity="0.5,0.5,0.5"
-                data-speed="2000,0,2000"
-                data-offset="200"></div>
+                data-opacity="0.5"
+                data-trigger=".hold-section"
+                data-trigger-range="top bottom,bottom top"></div>
           <div class="circle js-scroll-target" style="width: 50px; height: 50px;"
-                data-y="300,-50,-200"
-                data-opacity="0.3,0.3,0.3"
-                data-speed="2000,0,2000"
-                data-offset="200"></div>
+                data-y="200,-50,-300"
+                data-opacity="0.3"
+                data-trigger=".hold-section"
+                data-trigger-range="top bottom,bottom top"></div>
           <div class="square js-scroll-target" style="width: 20px; height: 20px;"
-                data-y="160,-35,-90"
+                data-y="90,-35,-160"
                 data-rotate="-315,45,405"
-                data-opacity="0.2,0.2,0.2"
-                data-speed="2000,0,2000"
-                data-offset="200"></div>
+                data-opacity="0.2"
+                data-trigger=".hold-section"
+                data-trigger-range="top bottom,bottom top"></div>
 
           <!-- Random Parallax Example -->
           <div class="square js-scroll-target" style="width: 200px; height: 200px;"
-                data-x="-600,-600,-600" 
-                data-y="-2030, -125, 1970"
+                data-x="-600"
+                data-y="-710,-100,510"
                 data-rotate="-315,45,405"
-                data-speed="2000,0,2000"
-                data-offset="-900"></div>
+                data-trigger=".hold-section" data-marker="1"
+                data-trigger-range="top top,top+=20% top"></div>
           <div class="square js-scroll-target" style="width: 200px; height: 200px;"
-                data-x="600,600,600" 
-                data-y="-2030, -125, 1970"
+                data-x="600"
+                data-y="-710,-100,510"
                 data-rotate="-315,45,405"
-                data-speed="2000,0,2000"
-                data-offset="100"></div>
+                data-trigger=".hold-section" data-marker="1"
+                data-trigger-range="top+=20% top,top+=40% top"></div>
           <div class="square js-scroll-target" style="width: 200px; height: 200px;"
-                data-x="-600,-600,-600" 
-                data-y="-2030, -125, 1970"
+                data-x="-600"
+                data-y="-710,-100,510"
                 data-rotate="-315,45,405"
-                data-speed="2000,0,2000"
-                data-offset="1100"></div>
+                data-trigger=".hold-section" data-marker="1"
+                data-trigger-range="top+=40% top,top+=60% top"></div>
           <div class="square js-scroll-target" style="width: 200px; height: 200px;"
-                data-x="600,600,600" 
-                data-y="-2030, -125, 1970"
+                data-x="600"
+                data-y="-710,-100,510"
                 data-rotate="-315,45,405"
-                data-speed="2000,0,2000"
-                data-offset="2100"></div>
+                data-trigger=".hold-section" data-marker="1"
+                data-trigger-range="top+=60% top,top+=80% top"></div>
 
           <div class="hold-container">
             <div class="hold-container-title">
@@ -261,43 +257,43 @@
             <div class="quote-container">
               <div class="scrolling-quote">
                 <h2>
-                  <span class="js-scroll-target" data-opacity="0,0" data-speed="100" data-offset="1700" data-hold="500">Why</span>
-                  <span class="js-scroll-target" data-opacity="0,0" data-speed="100" data-offset="1800" data-hold="400">are</span>
-                  <span class="js-scroll-target" data-opacity="0,0" data-speed="100" data-offset="1900" data-hold="300">we</span>
-                  <span class="js-scroll-target" data-opacity="0,0" data-speed="100" data-offset="2000" data-hold="200">still</span>
-                  <span class="js-scroll-target" data-opacity="0,0" data-speed="100" data-offset="2100" data-hold="100">here?</span>
+                  <span class="js-scroll-target" data-opacity="0,1,0" data-trigger=".hold-section" data-trigger-range="top+=000 top,top+=500 top">Why</span>
+                  <span class="js-scroll-target" data-opacity="0,1,0" data-trigger=".hold-section" data-trigger-range="top+=100 top,top+=500 top">are</span>
+                  <span class="js-scroll-target" data-opacity="0,1,0" data-trigger=".hold-section" data-trigger-range="top+=200 top,top+=500 top">we</span>
+                  <span class="js-scroll-target" data-opacity="0,1,0" data-trigger=".hold-section" data-trigger-range="top+=300 top,top+=500 top">still</span>
+                  <span class="js-scroll-target" data-opacity="0,1,0" data-trigger=".hold-section" data-trigger-range="top+=400 top,top+=500 top">here?</span>
                 </h2>
               </div>
               <div class="scrolling-quote">
                 <h2>
-                  <span class="js-scroll-target" data-opacity="0,0" data-speed="100" data-offset="2400" data-hold="300">Just</span>
-                  <span class="js-scroll-target" data-opacity="0,0" data-speed="100" data-offset="2500" data-hold="200">to</span>
-                  <span class="js-scroll-target" data-opacity="0,0" data-speed="100" data-offset="2600" data-hold="100">suffer?</span>
+                  <span class="js-scroll-target" data-opacity="0,1,0" data-speed="100" data-offset="2400" data-hold="300">Just</span>
+                  <span class="js-scroll-target" data-opacity="0,1,0" data-speed="100" data-offset="2500" data-hold="200">to</span>
+                  <span class="js-scroll-target" data-opacity="0,1,0" data-speed="100" data-offset="2600" data-hold="100">suffer?</span>
                 </h2>
               </div>
               <div class="scrolling-quote">
                 <h2>
-                  <span class="js-scroll-target" data-opacity="0,0" data-speed="100" data-offset="2900" data-hold="600">Every</span>
-                  <span class="js-scroll-target" data-opacity="0,0" data-speed="100" data-offset="3000" data-hold="500">night</span>
-                  <span class="js-scroll-target" data-opacity="0,0" data-speed="100" data-offset="3100" data-hold="400">,  I</span>
-                  <span class="js-scroll-target" data-opacity="0,0" data-speed="100" data-offset="3200" data-hold="300">can</span>
-                  <span class="js-scroll-target" data-opacity="0,0" data-speed="100" data-offset="3300" data-hold="300">feel</span>
-                  <span class="js-scroll-target" data-opacity="0,0" data-speed="100" data-offset="3400" data-hold="200">my</span>
-                  <span class="js-scroll-target" data-opacity="0,0" data-speed="100" data-offset="3500" data-hold="100">leg</span>
+                  <span class="js-scroll-target" data-opacity="0,1,0" data-speed="100" data-offset="2900" data-hold="600">Every</span>
+                  <span class="js-scroll-target" data-opacity="0,1,0" data-speed="100" data-offset="3000" data-hold="500">night</span>
+                  <span class="js-scroll-target" data-opacity="0,1,0" data-speed="100" data-offset="3100" data-hold="400">,  I</span>
+                  <span class="js-scroll-target" data-opacity="0,1,0" data-speed="100" data-offset="3200" data-hold="300">can</span>
+                  <span class="js-scroll-target" data-opacity="0,1,0" data-speed="100" data-offset="3300" data-hold="300">feel</span>
+                  <span class="js-scroll-target" data-opacity="0,1,0" data-speed="100" data-offset="3400" data-hold="200">my</span>
+                  <span class="js-scroll-target" data-opacity="0,1,0" data-speed="100" data-offset="3500" data-hold="100">leg</span>
                 </h2>
               </div>
               <div class="scrolling-quote">
                 <h2>
-                  <span class="js-scroll-target" data-opacity="0,0" data-speed="100" data-offset="3800" data-hold="300">and</span>
-                  <span class="js-scroll-target" data-opacity="0,0" data-speed="100" data-offset="3900" data-hold="200">my</span>
-                  <span class="js-scroll-target" data-opacity="0,0" data-speed="100" data-offset="4000" data-hold="100">arm</span>
+                  <span class="js-scroll-target" data-opacity="0,1,0" data-speed="100" data-offset="3800" data-hold="300">and</span>
+                  <span class="js-scroll-target" data-opacity="0,1,0" data-speed="100" data-offset="3900" data-hold="200">my</span>
+                  <span class="js-scroll-target" data-opacity="0,1,0" data-speed="100" data-offset="4000" data-hold="100">arm</span>
                 </h2>
               </div>
               <div class="scrolling-quote">
                 <h2>
-                  <span class="js-scroll-target" data-opacity="0,0" data-speed="100" data-offset="4300" data-hold="300">even</span>
-                  <span class="js-scroll-target" data-opacity="0,0" data-speed="100" data-offset="4400" data-hold="200">my</span>
-                  <span class="js-scroll-target" data-opacity="0,0" data-speed="100" data-offset="4500" data-hold="100">fingers.</span>
+                  <span class="js-scroll-target" data-opacity="0,1,0" data-speed="100" data-offset="4300" data-hold="300">even</span>
+                  <span class="js-scroll-target" data-opacity="0,1,0" data-speed="100" data-offset="4400" data-hold="200">my</span>
+                  <span class="js-scroll-target" data-opacity="0,1,0" data-speed="100" data-offset="4500" data-hold="100">fingers.</span>
                 </h2>
               </div>
             </div>
@@ -309,16 +305,15 @@
         <div class="hold-sticky sticky">
           <div class="hold-horizontal js-scroll-target"
               data-x="0,-2000" 
-              data-speed="0,3000"
-              data-offset="0"
-              data-bottom-calc="1"
+              data-speed="1000"
+              data-offset="1000"
           >
             <div class="horizontal-hero">
               <div>
                 <h2 class="thin">SWEEPING</h2>
                 <h2 class="color-text-accent js-scroll-target"
                     data-x="0,300,300" 
-                    data-speed="1000,0,0"
+                    data-speed="800,0,0"
                     data-offset="550"
                 >
                   HORIZONTALLY
@@ -341,6 +336,6 @@
 
     </div>
 
-    <script src="js/script.js"></script>
+    <script src="js/gsap-script.js"></script>
   </body>
 </html>
