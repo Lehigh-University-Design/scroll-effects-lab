@@ -44,15 +44,16 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     const setupTriggers = () => {
-        const targets = document.querySelectorAll('.intersection-element');
+        const targets = document.querySelectorAll('.js-scroll-target');
         if (targets.length === 0) return;
 
         targets.forEach(target => {
             const x = parseRange(target.dataset.x);
             const y = parseRange(target.dataset.y);
+            const rotate = parseRange(target.dataset.rotate);
             const scale = parseRange(target.dataset.scale, 1);
             const opacity = parseRange(target.dataset.opacity, 1);
-            const animationDistance = parseRange(target.dataset.speed, 200);
+            const animationDistance = parseRange(target.dataset.speed, 100);
             const holdDistance = parseFloat(target.dataset.hold) || 0;
             const offset = parseFloat(target.dataset.offset) || 100;
 
@@ -60,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 domElement: target,
                 startScrollPosition: target.offsetTop, 
                 
-                x, y, scale, opacity,
+                x, y, rotate, scale, opacity,
                 animationDistance, holdDistance, offset,
                 
                 totalAnimationDistance: animationDistance.start + animationDistance.end + holdDistance ,
@@ -107,18 +108,15 @@ document.addEventListener('DOMContentLoaded', function () {
             // Calculate the styles based on progress
             const translateX = interpolateValue(item.x);
             const translateY = interpolateValue(item.y);
+            const rotate = interpolateValue(item.rotate);
             const scale = interpolateValue(item.scale);
             const opacity = interpolateValue(item.opacity);
 
             // Apply the styles
             item.domElement.style.transform = 
-                `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`;
+                `translate3d(${translateX}px, ${translateY}px, 0) rotate(${rotate}deg) scale(${scale})`;
             
             item.domElement.style.opacity = opacity;
-
-            // Add class override for css animations could be a better way to do all of this.
-            // element.classList.add([]);
-            // element.classList.remove([]);
         });
     };
 
@@ -139,7 +137,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             }
         };
+        const updateOnResize = () => {
+            elementsToAnimate.length = 0;
+            setupTriggers();
+            handleTriggerAnimations(window.scrollY);
+        };
 
+        window.addEventListener('resize', updateOnResize);
         window.addEventListener('scroll', scrollHandler, { passive: true });
         
         // Execute immediately on load to set the correct state for current scroll position
