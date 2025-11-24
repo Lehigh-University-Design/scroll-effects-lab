@@ -406,7 +406,6 @@ button,
 /* Horizontal hold */
 
 .hold-horizontal {
-    width: max-content;
     display: inline-flex;
     flex-direction: row;
     align-items: center;
