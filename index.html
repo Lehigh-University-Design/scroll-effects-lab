@@ -5,19 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JS Scroll Trigger Effect</title>
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Geist Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet"/>
 
+    <!-- Local Stylesheet -->
     <link rel="stylesheet" href="css/styles.css" />
 
+    <!-- Lenis for Smooth scrolling -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.35/dist/lenis.min.js"></script>
+    
+    <!-- GSAP Scroll Trigger -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
     
   </head>
   <body>
-    <div class="header js-scroll-target">
+    <div class="header">
       <div class="header-container">
         <div class="left-nav-container">
           <h1 id="logo-title">PARALLAXING</h1>
@@ -305,8 +308,9 @@
         <div class="hold-sticky sticky">
           <div class="hold-horizontal js-scroll-target"
               data-x="0,-2000" 
-              data-speed="1000"
-              data-offset="1000"
+              data-speed="1500"
+              data-trigger=".hold-horizontal-section"
+              data-trigger-range="top top,"
           >
             <div class="horizontal-hero">
               <div>
@@ -314,7 +318,8 @@
                 <h2 class="color-text-accent js-scroll-target"
                     data-x="0,300,300" 
                     data-speed="800,0,0"
-                    data-offset="550"
+                    data-trigger=".hold-horizontal-section"
+                    data-trigger-range="top top,"
                 >
                   HORIZONTALLY
                 </h2>

@@ -38,11 +38,81 @@ const parseRange = (dataAttrValue, defaultValue = 0) => {
     return { start, center, end };
 };
 
+const setupLenis = () => {
+    // 1. Initialize Lenis with smooth options
+    const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        direction: 'vertical', 
+        gestureDirection: 'vertical',
+        smoothTouch: false,
+        wheelMultiplier: 1,
+    });
+
+    // 2. Tie Lenis to the RequestAnimationFrame (RAF) loop
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // 3. Connect ScrollTrigger to Lenis
+    lenis.on('scroll', ScrollTrigger.update);
+
+    // Tell ScrollTrigger to use Lenis's scrollbar for calculation
+    ScrollTrigger.defaults({
+        scroller: window,
+    });
+};
+
+// --- SMART HEADER EFFECT ---
+const setupSmartHeader = () => {
+    const header = document.querySelector('.header');
+    if (!header) return;
+
+    const headerHeight = header.offsetHeight;
+    
+    // --- 1. Header Visibility Timeline (Unchanged) ---
+    const headerTimeline = gsap.timeline({ paused: true })
+        .to(header, { y: -headerHeight/2, opacity: 0, duration: 0.3, ease: "none" });
+
+    // --- 2. Direction-Based ScrollTrigger (Unchanged) ---
+    ScrollTrigger.create({
+        start: 1, 
+        onUpdate: (self) => {
+            if (self.direction === 1) {
+                headerTimeline.play();
+            } else if (self.direction === -1) {
+                headerTimeline.reverse();
+            }
+        }
+    });
+
+    // --- 3. NEW: Background Color Change Trigger ---
+    // Set the initial state (transparent)
+    gsap.set(header, { backgroundColor: 'rgba(0, 0, 0, 0.0)' });
+
+    ScrollTrigger.create({
+        trigger: ".hero-section",
+        start: "bottom 20%", 
+        end: "bottom 10%", 
+        scrub: true,
+
+        animation: gsap.to(header, { 
+            backgroundColor: 'rgba(0, 0, 0, 0.6)', 
+            ease: "none" 
+        }),
+    });
+};
+
 // ------------------------------------------------------------------
 // MAIN INITIALIZATION FUNCTION
 // ------------------------------------------------------------------
 
 const initGSAPTriggers = () => {
+    // Set up Lenis first
+    setupLenis();
+
     // Clear any existing ScrollTriggers to prevent duplicates on soft reload/resize (good practice)
     ScrollTrigger.getAll().forEach(t => t.kill());
     
@@ -128,6 +198,8 @@ const initGSAPTriggers = () => {
             });
         }
     });
+
+    setupSmartHeader();
 };
 
 // --- RUN SCRIPT ---
