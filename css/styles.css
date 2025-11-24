@@ -244,7 +244,7 @@ button,
 }
 
 .js-scroll-target {
-    /* transition: all 0.2s linear; */
+    transition: all 0.3s cubic-bezier(0, 1, 1, 1);
 }
 
 .square {
@@ -324,25 +324,46 @@ button,
     flex-direction: row;
     justify-content: center;
     gap: 4em;
+    padding-inline: 2em;
+}
+
+.flexbox-col {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2em;
+    padding-inline: 2em;
+}
+
+.sticky {
+    position: sticky;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.hop-transition {
+    transition: all 0.3s cubic-bezier(0.3, 1.6, 1, 1);
 }
 
 /* PARALLAX HOLD */
 
-.hold-section {
-    height: 3800px;
+.hold-section, .hold-horizontal-section {
+    position: relative;
+    height: 4000px;
     width: 100%;
     background-color: transparent;
     display: flex;
     justify-content: center;
 
     .hold-sticky {
-        position: relative;
         height: 100vh;
         width: 100%;
-        padding-block: 10em 16em;
+        padding-block: 0em 0em;
         overflow: hidden;
         box-sizing: border-box;
-        position: sticky;
         top: 0;
         align-self: flex-start;
         display: flex;
@@ -357,7 +378,7 @@ button,
         flex-direction: column;
         align-items: center;
         gap: 2em;
-        padding-inline: 1em;
+        padding-inline: 2em;
     }
 
     .hold-container-title {
@@ -367,6 +388,7 @@ button,
     .quote-container {
         position: relative;
         width: 100%;
+        min-height: 100px;
     }
 
     .scrolling-quote {
@@ -379,6 +401,30 @@ button,
         }
     }
 }
+
+/* Horizontal hold */
+
+.hold-horizontal {
+    width: max-content;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    min-width: 100%;
+    min-height: 100%;
+
+    .horizontal-hero {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        box-sizing: border-box;
+        background-color: var(--color-white);
+        gap: 2em;
+        padding-inline: 2em;
+        width: 100vw;
+        height: 100vh;
+    }
+}
+
 
 .test-section {
     height: 100vh;

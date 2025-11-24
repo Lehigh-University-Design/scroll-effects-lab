@@ -47,6 +47,12 @@ document.addEventListener('DOMContentLoaded', function () {
         const targets = document.querySelectorAll('.js-scroll-target');
         if (targets.length === 0) return;
 
+        // Remove all stickies for accurate calculation
+        const stickies = document.querySelectorAll('.sticky');
+        stickies.forEach(sticky => {
+            sticky.classList.toggle('sticky');
+        });
+
         targets.forEach(target => {
             const x = parseRange(target.dataset.x);
             const y = parseRange(target.dataset.y);
@@ -56,16 +62,24 @@ document.addEventListener('DOMContentLoaded', function () {
             const animationDistance = parseRange(target.dataset.speed, 100);
             const holdDistance = parseFloat(target.dataset.hold) || 0;
             const offset = parseFloat(target.dataset.offset) || 100;
+            const bottomCalc = (target.dataset.bottomCalc ? target.getBoundingClientRect().bottom : target.getBoundingClientRect().top)
+            
+            const startPosition = bottomCalc + window.scrollY - window.innerHeight;
 
             elementsToAnimate.push({
                 domElement: target,
-                startScrollPosition: target.offsetTop, 
+                startScrollPosition: startPosition, 
                 
                 x, y, rotate, scale, opacity,
                 animationDistance, holdDistance, offset,
                 
                 totalAnimationDistance: animationDistance.start + animationDistance.end + holdDistance ,
             });
+        });
+
+        // Add back stickies
+        stickies.forEach(sticky => {
+            sticky.classList.toggle('sticky');
         });
     };
 
@@ -124,10 +138,10 @@ document.addEventListener('DOMContentLoaded', function () {
      * Main initialization function
      */
     const init = () => {
-        // 1. Setup the element positions and ranges for parallax
+        // Setup the element positions and ranges for parallax
         setupTriggers();
         
-        // 2. Set up native scroll listener to execute the animation
+        // Set up native scroll listener to execute the animation
         let rafId = null;
         const scrollHandler = () => {
             if (!rafId) {
@@ -137,6 +151,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             }
         };
+        // Setup resize functions for resizing of window
         const updateOnResize = () => {
             elementsToAnimate.length = 0;
             setupTriggers();
